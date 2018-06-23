@@ -1,16 +1,7 @@
-PROMPT='⟴  %{$fg[cyan]%}%c%{$reset_color%} %{$fg[magenta]%}$(git_info_ayush)%{$reset_color%}$(random_emoji)  '
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+PROMPT='${ret_status} %{$fg[cyan]%}%34<...<%~%<<%{$reset_color%} $(git_prompt_info)'
 
-EMOJI=(💩 🐦 🚀 🐞 🎨 🍕 🐭 👽 ☕️ 🔬 💀 🐷 🐼 🐶 🐸 🐧 🐳 🍔 🍣 🍻 🔮 💰 💎 💾 💜 🍪 🌞 🌍 🐌 🐓 🍄 )
-
-function random_emoji {
-  echo -n "$EMOJI[$RANDOM%$#EMOJI+1]"
-}
-
-function git_info_ayush {
-    if [ "$(git_current_branch)" != '' ]
-    then
-        echo "$(git_current_branch) "
-    else
-        echo ""
-    fi    
-}
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
